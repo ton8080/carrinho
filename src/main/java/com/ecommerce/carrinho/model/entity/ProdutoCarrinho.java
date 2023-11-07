@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "produto_carrinho")
+@Table(name = "product_cart")
 @Data
 public class ProdutoCarrinho implements Serializable {
 
@@ -14,12 +14,12 @@ public class ProdutoCarrinho implements Serializable {
     private ProdutoCarrinhoId produtoCarrinhoId;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "carrinho_id", insertable = false, updatable = false)
-    private Carrinho carrinho;
+    @JoinColumn(name = "cart_id", insertable = false, updatable = false)
+    private Cart cart;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "produto_id", insertable = false, updatable = false)
-    private Produto produto;
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product product;
 
     private Integer quantidade;
 
@@ -28,8 +28,8 @@ public class ProdutoCarrinho implements Serializable {
     @PrePersist
     private void montaPk(){
         this.produtoCarrinhoId = new ProdutoCarrinhoId();
-        this.produtoCarrinhoId.setCarrinhoId(this.carrinho.getId());
-        this.produtoCarrinhoId.setProdutoId(this.produto.getId());
+        this.produtoCarrinhoId.setCart_id(this.cart.getId());
+        this.produtoCarrinhoId.setProduct_id(this.product.getId());
 
     }
 
@@ -37,11 +37,11 @@ public class ProdutoCarrinho implements Serializable {
     @Data
     public static class ProdutoCarrinhoId implements Serializable {
 
-        @Column(name = "produto_id")
-        private String produtoId;
+        @Column(name = "product_id")
+        private Integer product_id;
 
         @Column(name = "carrinho_id")
-        private String carrinhoId;
+        private Integer cart_id;
     }
 
 }

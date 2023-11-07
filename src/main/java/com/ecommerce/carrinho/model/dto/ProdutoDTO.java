@@ -1,6 +1,6 @@
 package com.ecommerce.carrinho.model.dto;
 
-import com.ecommerce.carrinho.model.entity.Produto;
+import com.ecommerce.carrinho.model.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,17 +11,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProdutoDTO {
-    private String id;
+    private Integer id;
     private String nome;
     private String descricao;
-    private Double valor;
+    private Double preco;
     private Integer quantidade;
 
-    public ProdutoDTO(Produto produto) {
+    public ProdutoDTO(Product produto) {
         this.id = produto.getId();
         this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
-        this.valor = produto.getValor();
+        this.preco = produto.getPreco();
     }
 
 }

@@ -19,20 +19,20 @@ public class CarrinhoController {
 
 
     @PostMapping("/produto")
-    public ResponseEntity<CarrinhoDTO> inserirProduto(@RequestBody ProdutoDTO produto, @PathVariable(name = "idCarinho") String idCarinho) {
+    public ResponseEntity<CarrinhoDTO> inserirProduto(@RequestBody ProdutoDTO produto, @PathVariable(name = "idCarinho") Integer idCarinho) {
         var carrinho = carrinhoService.inserirProduto(idCarinho, produto);
         return ResponseEntity.ok(new CarrinhoDTO(carrinho));
     }
 
     @GetMapping
-    public ResponseEntity<CarrinhoDTO> listarProdutos(@PathVariable(name = "idCarinho") String idCarinho) throws InterruptedException {
+    public ResponseEntity<CarrinhoDTO> listarProdutos(@PathVariable(name = "idCarinho") Integer idCarinho) throws InterruptedException {
         var carrinho = carrinhoService.listarProdutos(idCarinho);
         return ResponseEntity.ok(new CarrinhoDTO(carrinho));
     }
 
 
     @DeleteMapping("/produto/{idProduto}")
-    public ResponseEntity removerProduto(@PathVariable(name = "idProduto") String idProduto, @PathVariable(name = "idCarinho") String idCarinho) {
+    public ResponseEntity removerProduto(@PathVariable(name = "idProduto") Integer idProduto, @PathVariable(name = "idCarinho") Integer idCarinho) {
         carrinhoService.removerProduto(idCarinho, idProduto);
         return ResponseEntity.noContent().build();
     }

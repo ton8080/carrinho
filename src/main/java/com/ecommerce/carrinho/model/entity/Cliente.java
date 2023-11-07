@@ -9,14 +9,14 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "cliente")
+@Table(name = "client")
 public class Cliente implements Serializable {
 
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(name = "nome")
     @NotNull
@@ -35,6 +35,6 @@ public class Cliente implements Serializable {
     private String endereco;
 
     @OneToOne(mappedBy = "cliente")
-    private Carrinho carrinho;
+    private Cart cart;
 
 }

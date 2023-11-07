@@ -17,7 +17,7 @@ public class ProdutoCarrinhoDTO {
     private Double valor;
 
     public ProdutoCarrinhoDTO(ProdutoCarrinho produtoCarrinho) {
-        produto = new ProdutoDTO(produtoCarrinho.getProduto());
+        produto = new ProdutoDTO(produtoCarrinho.getProduct());
         quantidade = produto.getQuantidade();
         valor = produtoCarrinho.getValor();
     }

@@ -7,15 +7,15 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "carrinho")
+@Table(name = "cart")
 @Data
-public class Carrinho implements Serializable {
+public class Cart implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProdutoCarrinho> produtos;
 
     @OneToOne

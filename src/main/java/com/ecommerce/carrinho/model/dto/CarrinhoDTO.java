@@ -1,7 +1,7 @@
 package com.ecommerce.carrinho.model.dto;
 
 import com.ecommerce.carrinho.model.entity.ProdutoCarrinho;
-import com.ecommerce.carrinho.model.entity.Carrinho;
+import com.ecommerce.carrinho.model.entity.Cart;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class CarrinhoDTO {
 
    private List<ProdutoCarrinhoDTO> produtos = new ArrayList<>();
    private Double valorTotal = Double.valueOf(0);
-    public CarrinhoDTO(Carrinho carrinho) {
+    public CarrinhoDTO(Cart carrinho) {
         for (ProdutoCarrinho produtoCarrinho : carrinho.getProdutos()){
             produtos.add(new ProdutoCarrinhoDTO(produtoCarrinho));
             valorTotal += produtoCarrinho.getValor();
