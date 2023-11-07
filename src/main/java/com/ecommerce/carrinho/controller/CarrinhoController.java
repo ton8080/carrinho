@@ -20,9 +20,10 @@ public class CarrinhoController {
 
     @PostMapping("/produto")
     public ResponseEntity<CarrinhoDTO> inserirProduto(@RequestBody ProdutoDTO produto, @PathVariable(name = "idCarinho") Integer idCarinho) {
-        var carrinho = carrinhoService.inserirProduto(idCarinho, produto);
+        var carrinho = carrinhoService.adicionarProdutoExistente(idCarinho, produto);
         return ResponseEntity.ok(new CarrinhoDTO(carrinho));
     }
+
 
     @GetMapping
     public ResponseEntity<CarrinhoDTO> listarProdutos(@PathVariable(name = "idCarinho") Integer idCarinho) throws InterruptedException {

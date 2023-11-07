@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarrinhoRepository extends JpaRepository<Cart, Integer> {
+	
+	@Query("SELECT c FROM Cart c WHERE c.id = ?1")
+	Cart findCarrinhoById(Integer id);
 
 
     @Transactional
