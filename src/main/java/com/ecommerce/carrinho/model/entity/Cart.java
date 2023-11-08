@@ -10,6 +10,14 @@ import java.util.List;
 @Table(name = "cart")
 @Data
 public class Cart implements Serializable {
+	
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", produtos=" + produtos +
+                '}';
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
