@@ -15,9 +15,8 @@ public interface CarrinhoRepository extends JpaRepository<Cart, Integer> {
 	Cart findCarrinhoById(Integer id);
 
 
-    @Transactional
-    @Modifying
-    @Query("DELETE FROM ProdutoCarrinho pc WHERE pc.produtoCarrinhoId.product_id = :produtoId")
-    void removerProdutoPeloIdProduto(@Param("produtoId") Integer idProduto);
+	@Modifying
+	@Query("DELETE FROM ProdutoCarrinho pc WHERE pc.produtoCarrinhoId.productId = :produtoId AND pc.produtoCarrinhoId.cartId = :cartId")
+	void removerProdutoPeloIdProduto(Integer produtoId, Integer cartId);
 
 }
